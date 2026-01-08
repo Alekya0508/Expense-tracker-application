@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Expense Tracker</h1>
+            <p>Track and manage your daily expenses</p>
+        </header>
+
+        <!-- Add Expense Form -->
+        <section class="card">
+            <h2>Add New Expense</h2>
+            <form id="expenseForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Education">Education</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" step="0.01" min="0" placeholder="0.00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="Optional description">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Add Expense</button>
+            </form>
+        </section>
+
+        <!-- Statistics Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Expense</h3>
+                <p class="stat-value" id="totalExpense">$0.00</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Highest Category</h3>
+                <p class="stat-value" id="highestCategory">-</p>
+                <p class="stat-amount" id="highestAmount">$0.00</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Lowest Category</h3>
+                <p class="stat-value" id="lowestCategory">-</p>
+                <p class="stat-amount" id="lowestAmount">$0.00</p>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-grid">
+            <div class="card">
+                <h2>Expense Trend</h2>
+                <canvas id="trendChart"></canvas>
+            </div>
+            
+            <div class="card">
+                <h2>By Category</h2>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Expenses Table -->
+        <section class="card">
+            <h2>All Expenses</h2>
+            <div class="table-container">
+                <table id="expensesTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expensesTableBody">
+                        <!-- Expenses will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
